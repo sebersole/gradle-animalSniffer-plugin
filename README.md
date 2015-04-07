@@ -1,2 +1,3 @@
-# gradle-animalSnifer-plugin
+# gradle-animalSniffer-plugin
+
 AnimalSniffer plugin for Gradle
