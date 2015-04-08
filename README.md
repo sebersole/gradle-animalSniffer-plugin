@@ -1,9 +1,8 @@
-# gradle-animalSniffer-plugin
+# AnimalSniffer plugin for Gradle
 
-AnimalSniffer plugin for Gradle
+The who, what, why, when...
 
-Usage
------
+### Usage
 
 First you must make the plugin available to your build...
 
@@ -33,6 +32,8 @@ By default the plugin will verify the main source set for the project.  You can 
     animalSniffer {
         sourceSets += project.sourceSets.test
     }
+
+The plugin with add a `doLast` action to the compile task for each source set you ask it to verify.
 
 By default the plugin will also ask AnimalSniffer to exclude all classes from all dependencies in the source set's
 compileClasspath (`org.gradle.api.tasks.SourceSet.getCompileClasspath`).  You can ask it to not exclude them:
