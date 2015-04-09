@@ -56,7 +56,8 @@ task wrapper(type: Wrapper) {
 }
 
 group = 'org.hibernate.build.gradle'
-version = '2.0.0-SNAPSHOT'
+version = '1.0.1.Final'
+buildDir = 'target'
 
 publishing {
 	publications {
@@ -76,10 +77,6 @@ publishing {
 					description 'Integrates AnimalSniffer functionality into a Gradle build'
 
 					url 'https://github.com/sebersole/gradle-animalSniffer-plugin'
-//				organization {
-//					name 'Hibernate.org'
-//					url 'http://hibernate.org'
-//				}
 
 					issueManagement {
 						system 'github'
