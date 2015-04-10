@@ -15,7 +15,7 @@ First you must make the plugin available to your build...
 		}
 	}
 
-	apply plugin: 'org.hibernate.build.gradle.animalsniffer'
+	apply plugin: 'org.hibernate.build.gradle.animalSniffer'
 
 *where `<version>` indicates the version you would like to use*
 
