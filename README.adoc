@@ -7,8 +7,8 @@ Integrates the 2 main Animal Sniffer activities into Gradle:
 
 The 2 plugins are available via the Gradle Plugin Portal:
 
-	* https://plugins.gradle.org/plugin/org.hibernate.build.animalsniffer.check[org.hibernate.build.animalsniffer.check]
-	* https://plugins.gradle.org/plugin/org.hibernate.build.animalsniffer.generate[org.hibernate.build.animalsniffer.generate]
+	* https://plugins.gradle.org/plugin/org.hibernate.build.animal-sniffer-check[org.hibernate.build.animal-sniffer-check]
+	* https://plugins.gradle.org/plugin/org.hibernate.build.animal-sniffer-generate[org.hibernate.build.animal-sniffer-generate]
 
 
 == Usage
@@ -18,8 +18,8 @@ First you must make the plugin available to your build, e.g.:
 
 ----
 	plugins {
-	    id 'org.hibernate.build.animalsniffer.check'
-	    id 'org.hibernate.build.animalsniffer.generate'
+	    id 'org.hibernate.build.animal-sniffer-check'
+	    id 'org.hibernate.build.animal-sniffer-generate'
 	}
 ----
 
