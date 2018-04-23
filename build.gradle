@@ -8,7 +8,7 @@ plugins {
 }
 
 group = 'org.hibernate.build.animalsniffer'
-version = '2.0.0.Alpha1'
+version = '2.0.0-SNAPSHOT'
 
 repositories {
 	mavenCentral()
