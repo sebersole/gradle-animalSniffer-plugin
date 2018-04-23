@@ -1,0 +1,98 @@
+= AnimalSniffer plugins for Gradle
+
+Integrates the 2 main Animal Sniffer activities into Gradle:
+
+	* validating against a signature file
+	* generating a signature file
+
+The 2 plugins are available via the Gradle Plugin Portal:
+
+	* https://plugins.gradle.org/plugin/org.hibernate.build.animalsniffer.check[org.hibernate.build.animalsniffer.check]
+	* https://plugins.gradle.org/plugin/org.hibernate.build.animalsniffer.generate[org.hibernate.build.animalsniffer.generate]
+
+
+== Usage
+
+First you must make the plugin available to your build, e.g.:
+
+
+----
+	plugins {
+	    id 'org.hibernate.build.animalsniffer.check'
+	    id 'org.hibernate.build.animalsniffer.generate'
+	}
+----
+
+[NOTE]
+====
+If you are unfamiliar with how to apply plugins in Gradle, see the details on those plugin pages
+for applying the plugins to your project.
+====
+
+Both of these plugins register the `SnifferExtension` object with the project (if not already), which can be used to
+configure task execution.  This extension is named `sniffer`:
+
+----
+sniffer {
+    // plugin config goes here
+}
+----
+
+
+=== Check Plugin
+
+The check plugin is used to verify that the project is compatible with the
+specified signature files.  It is configured through `SnifferExtension`:
+
+----
+sniffer {
+	check {
+		// by default the plugin will verify the main source set for the project.  You can ask it to
+		// verify additional source sets as well:
+		sourceSets += project.sourceSets.test
+
+		// by default the plugin will ask AnimalSniffer to exclude all classes from all dependencies
+		// in each source set's compileClasspath.  You can ask it to not exclude them.  Just be aware
+		// that this effectively means you will need signatures for all your compile time dependencies.
+		excludeCompileClasspath = false
+	}
+}
+----
+
+The plugin creates a Gradle `Configuration` object named `sniffer` used to identify the signatures to
+be checked.  For example, to verify against the Java 6 signature:
+
+----
+    dependencies {
+        sniffer 'org.codehaus.mojo.signature:java16:1.0@signature'
+    }
+----
+
+
+
+
+=== Generate Plugin
+
+The generate plugin on the other hand lets you generate these signature files.  It is also configured through
+`SnifferExtension`:
+
+----
+sniffer {
+    generate {
+    	// By default writes to ${buildDir}/signatures/${project.name}.signature
+    	outputFile project.file( 'some.file' )
+
+    	// FileCollection identifying the files to use.  By default ${project.sourceSets.main.allJava} is used
+    	apiFiles {
+    		// e.g., filter an class with a name ending in `Internal`
+    		filter {
+    			exclude '**/*Internal'
+    		}
+    	}
+
+    	// or even wholesale swap it:
+    	// apiFiles sourceSets.test.allJava
+    }
+}
+----
+
